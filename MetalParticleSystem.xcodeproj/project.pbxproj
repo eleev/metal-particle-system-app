@@ -17,6 +17,8 @@
 		A91364631F950FC800C338E8 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = A91364621F950FC800C338E8 /* Shaders.metal */; };
 		A9DE73361F963CC200E180A6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9DE73351F963CC200E180A6 /* .gitignore */; };
 		A9DE73391F963DBB00E180A6 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DE73381F963DBB00E180A6 /* Vertex.swift */; };
+		A9DE733B1F963E2500E180A6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DE733A1F963E2500E180A6 /* Node.swift */; };
+		A9DE733D1F96426900E180A6 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DE733C1F96426900E180A6 /* Triangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		A9DE73331F96237500E180A6 /* Matrix4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
 		A9DE73351F963CC200E180A6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A9DE73381F963DBB00E180A6 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		A9DE733A1F963E2500E180A6 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		A9DE733C1F96426900E180A6 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +111,7 @@
 		A91364311F95075300C338E8 /* MetalParticleSystem */ = {
 			isa = PBXGroup;
 			children = (
-				A9DE73371F963DA000E180A6 /* Structs */,
+				A9DE73371F963DA000E180A6 /* Library */,
 				A9DE73301F96236D00E180A6 /* Utils */,
 				A91364611F950FB200C338E8 /* Shaders */,
 				A91364321F95075300C338E8 /* AppDelegate.swift */,
@@ -156,12 +160,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		A9DE73371F963DA000E180A6 /* Structs */ = {
+		A9DE73371F963DA000E180A6 /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				A9DE73381F963DBB00E180A6 /* Vertex.swift */,
+				A9DE733A1F963E2500E180A6 /* Node.swift */,
+				A9DE733C1F96426900E180A6 /* Triangle.swift */,
 			);
-			path = Structs;
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91364631F950FC800C338E8 /* Shaders.metal in Sources */,
+				A9DE733B1F963E2500E180A6 /* Node.swift in Sources */,
 				A9DE73391F963DBB00E180A6 /* Vertex.swift in Sources */,
+				A9DE733D1F96426900E180A6 /* Triangle.swift in Sources */,
 				A91364351F95075300C338E8 /* ViewController.swift in Sources */,
 				A91364331F95075300C338E8 /* AppDelegate.swift in Sources */,
 			);
