@@ -14,6 +14,8 @@
 		A913643D1F95075300C338E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A913643B1F95075300C338E8 /* LaunchScreen.storyboard */; };
 		A91364481F95075300C338E8 /* MetalParticleSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91364471F95075300C338E8 /* MetalParticleSystemTests.swift */; };
 		A91364531F95075300C338E8 /* MetalParticleSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91364521F95075300C338E8 /* MetalParticleSystemUITests.swift */; };
+		A91364631F950FC800C338E8 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = A91364621F950FC800C338E8 /* Shaders.metal */; };
+		A9DE73361F963CC200E180A6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9DE73351F963CC200E180A6 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,11 @@
 		A913644E1F95075300C338E8 /* MetalParticleSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetalParticleSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91364521F95075300C338E8 /* MetalParticleSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalParticleSystemUITests.swift; sourceTree = "<group>"; };
 		A91364541F95075300C338E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A91364621F950FC800C338E8 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		A9DE73311F96237400E180A6 /* MetalParticleSystem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MetalParticleSystem-Bridging-Header.h"; sourceTree = "<group>"; };
+		A9DE73321F96237500E180A6 /* Matrix4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Matrix4.m; sourceTree = "<group>"; };
+		A9DE73331F96237500E180A6 /* Matrix4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
+		A9DE73351F963CC200E180A6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +84,7 @@
 		A91364261F95075300C338E8 = {
 			isa = PBXGroup;
 			children = (
+				A9DE73351F963CC200E180A6 /* .gitignore */,
 				A91364311F95075300C338E8 /* MetalParticleSystem */,
 				A91364461F95075300C338E8 /* MetalParticleSystemTests */,
 				A91364511F95075300C338E8 /* MetalParticleSystemUITests */,
@@ -97,6 +105,8 @@
 		A91364311F95075300C338E8 /* MetalParticleSystem */ = {
 			isa = PBXGroup;
 			children = (
+				A9DE73301F96236D00E180A6 /* Utils */,
+				A91364611F950FB200C338E8 /* Shaders */,
 				A91364321F95075300C338E8 /* AppDelegate.swift */,
 				A91364341F95075300C338E8 /* ViewController.swift */,
 				A91364361F95075300C338E8 /* Main.storyboard */,
@@ -123,6 +133,24 @@
 				A91364541F95075300C338E8 /* Info.plist */,
 			);
 			path = MetalParticleSystemUITests;
+			sourceTree = "<group>";
+		};
+		A91364611F950FB200C338E8 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				A91364621F950FC800C338E8 /* Shaders.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		A9DE73301F96236D00E180A6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A9DE73331F96237500E180A6 /* Matrix4.h */,
+				A9DE73321F96237500E180A6 /* Matrix4.m */,
+				A9DE73311F96237400E180A6 /* MetalParticleSystem-Bridging-Header.h */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +221,7 @@
 				TargetAttributes = {
 					A913642E1F95075300C338E8 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					A91364421F95075300C338E8 = {
@@ -232,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9DE73361F963CC200E180A6 /* .gitignore in Resources */,
 				A913643D1F95075300C338E8 /* LaunchScreen.storyboard in Resources */,
 				A913643A1F95075300C338E8 /* Assets.xcassets in Resources */,
 				A91364381F95075300C338E8 /* Main.storyboard in Resources */,
@@ -259,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A91364631F950FC800C338E8 /* Shaders.metal in Sources */,
 				A91364351F95075300C338E8 /* ViewController.swift in Sources */,
 				A91364331F95075300C338E8 /* AppDelegate.swift in Sources */,
 			);
@@ -426,12 +457,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EK3QDL7K69;
 				INFOPLIST_FILE = MetalParticleSystem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = projectk.io.MetalParticleSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalParticleSystem/Utils/MetalParticleSystem-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -441,12 +475,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EK3QDL7K69;
 				INFOPLIST_FILE = MetalParticleSystem/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = projectk.io.MetalParticleSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MetalParticleSystem/Utils/MetalParticleSystem-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
