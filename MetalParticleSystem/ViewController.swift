@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     var timer: CADisplayLink!
     var commandQueue: MTLCommandQueue!
     
-    var objectToDraw: Triangle!
+    var objectToDraw: Cube!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         view.layer.addSublayer(metalLayer)
         
         // Vertext Buffer setup
-        objectToDraw = Triangle(device: device)
+        objectToDraw = Cube(device: device)
         
         // Render pipeline setup
         let defaultLibrary = device.makeDefaultLibrary()
