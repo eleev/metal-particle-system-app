@@ -12,10 +12,26 @@ import QuartzCore
 
 /// Node represents an object to draw. Requires verticies, name and a device to create buffers and render later on.
 class Node {
+    
+    // MARK: - Properties
+    
     let devide: MTLDevice
     let name: String
     var vertexCount: Int
     var vertexBuffer: MTLBuffer
+    
+    // MARK: - Transform properties
+    
+    var positionX: Float = 0.0
+    var positionY: Float = 0.0
+    var positionZ: Float = 0.0
+    
+    var rotationX: Float = 0.0
+    var rotationY: Float = 0.0
+    var rotationZ: Float = 0.0
+    var scale: Float     = 1.0
+    
+    // MARK: - Initializers
     
     init?(name: String, vertices: Array<Vertex>, device: MTLDevice) {
         
@@ -32,6 +48,8 @@ class Node {
         self.devide = device
         vertexCount = vertices.count
     }
+    
+    // MARK: - Methods
     
     /// Renders node using triangle primitive into the provided command queue and pipeline state
     ///
@@ -57,6 +75,14 @@ class Node {
         
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
+    }
+    
+    func modelMatrix() -> Matrix4 {
+        let matrix = Matrix4()
+        matrix.translate(positionX, y: positionY, z: positionZ)
+        matrix.rotateAroundX(rotationX, y: rotationY, z: rotationZ)
+        matrix.scale(scale, y: scale, z: scale)
+        return matrix
     }
     
 }
