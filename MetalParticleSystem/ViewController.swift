@@ -54,6 +54,8 @@ class ViewController: UIViewController {
         
         timer = CADisplayLink(target: self, selector: #selector(ViewController.gameloop))
         timer.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
+        
+        commandQueue = device.makeCommandQueue()
     }
 
     // MARK: - Runloop
