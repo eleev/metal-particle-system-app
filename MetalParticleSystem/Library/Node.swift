@@ -21,6 +21,8 @@ class Node {
     var vertexBuffer: MTLBuffer
     var time: CFTimeInterval = 0.0
 
+    var bufferProvider: BufferProvider
+    
     // MARK: - Transform properties
     
     var positionX: Float = 0.0
@@ -35,6 +37,8 @@ class Node {
     // MARK: - Initializers
     
     init?(name: String, vertices: Array<Vertex>, device: MTLDevice) {
+        
+        self.bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3, sizeOfUniformsBuffer: MemoryLayout<Float>.size * Matrix4.numberOfElements * 2)
         
         var vertexData = Array<Float>()
         vertices.forEach { vertex in
@@ -60,6 +64,9 @@ class Node {
     ///   - drawable: is an instance of CAMetalDrawable class
     ///   - clearColor: is an optional instance of MTLClearColor 
     func render(in commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, parentModelViewMatrix: Matrix4, projectionMatrix: Matrix4, clearColor: MTLClearColor?) {
+
+        // This will make the CPU wait in case bufferProvider.avaliableResourcesSemaphore has no free resources.
+        _ = bufferProvider.avaliableResourcesSemaphore.wait(timeout: DispatchTime.distantFuture)
         
         let renderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
@@ -68,6 +75,10 @@ class Node {
         renderPassDescriptor.colorAttachments[0].storeAction = .store
         
         let commandBuffer = commandQueue.makeCommandBuffer()
+        // When the GPU finishes rendering, it executes a completion handler to signal the semaphore and bumps its count back up again.
+        commandBuffer?.addCompletedHandler { (_) in
+            self.bufferProvider.avaliableResourcesSemaphore.signal()
+        }
         
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
         renderEncoder?.setCullMode(MTLCullMode.front)
@@ -77,13 +88,7 @@ class Node {
         let nodeModelMatrix = self.modelMatrix()
         nodeModelMatrix.multiply(left: parentModelViewMatrix)
         
-
-        let uniformBuffer = device.makeBuffer(length: MemoryLayout<Float>.size * Matrix4.numberOfElements * 2, options: [])
-        let bufferPointer = uniformBuffer?.contents()
-        
-        memcpy(bufferPointer, nodeModelMatrix.raw, MemoryLayout<Float>.size * Matrix4.numberOfElements)
-        let accumulatedPointer: UnsafeMutableRawPointer = bufferPointer! + MemoryLayout<Float>.size * Matrix4.numberOfElements
-        memcpy(accumulatedPointer, projectionMatrix.raw, MemoryLayout<Float>.size * Matrix4.numberOfElements)
+        let uniformBuffer = bufferProvider.nextUniformsBuffer(projectionMatrix: projectionMatrix, modelViewMatrix: nodeModelMatrix)
         
         renderEncoder?.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
         renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertexCount, instanceCount: vertexCount/3)
