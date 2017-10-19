@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A91364331F95075300C338E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91364321F95075300C338E8 /* AppDelegate.swift */; };
-		A91364351F95075300C338E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91364341F95075300C338E8 /* ViewController.swift */; };
+		A91364351F95075300C338E8 /* MetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91364341F95075300C338E8 /* MetalViewController.swift */; };
 		A91364381F95075300C338E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A91364361F95075300C338E8 /* Main.storyboard */; };
 		A913643A1F95075300C338E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A91364391F95075300C338E8 /* Assets.xcassets */; };
 		A913643D1F95075300C338E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A913643B1F95075300C338E8 /* LaunchScreen.storyboard */; };
@@ -16,6 +16,7 @@
 		A91364531F95075300C338E8 /* MetalParticleSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91364521F95075300C338E8 /* MetalParticleSystemUITests.swift */; };
 		A91364631F950FC800C338E8 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = A91364621F950FC800C338E8 /* Shaders.metal */; };
 		A944B42D1F98CCD100EE0837 /* Matrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A944B42C1F98CCD100EE0837 /* Matrix4.swift */; };
+		A944B42F1F98E40300EE0837 /* GeometrySceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A944B42E1F98E40300EE0837 /* GeometrySceneViewController.swift */; };
 		A9AA46CA1F9713EA001C1F36 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AA46C91F9713EA001C1F36 /* Cube.swift */; };
 		A9DE73361F963CC200E180A6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9DE73351F963CC200E180A6 /* .gitignore */; };
 		A9DE73391F963DBB00E180A6 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DE73381F963DBB00E180A6 /* Vertex.swift */; };
@@ -43,7 +44,7 @@
 /* Begin PBXFileReference section */
 		A913642F1F95075300C338E8 /* MetalParticleSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalParticleSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91364321F95075300C338E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A91364341F95075300C338E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A91364341F95075300C338E8 /* MetalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalViewController.swift; sourceTree = "<group>"; };
 		A91364371F95075300C338E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A91364391F95075300C338E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A913643C1F95075300C338E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		A91364541F95075300C338E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A91364621F950FC800C338E8 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		A944B42C1F98CCD100EE0837 /* Matrix4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix4.swift; sourceTree = "<group>"; };
+		A944B42E1F98E40300EE0837 /* GeometrySceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometrySceneViewController.swift; sourceTree = "<group>"; };
 		A9AA46C91F9713EA001C1F36 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		A9DE73351F963CC200E180A6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A9DE73381F963DBB00E180A6 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
@@ -115,12 +117,12 @@
 				A9DE73371F963DA000E180A6 /* Library */,
 				A9DE73301F96236D00E180A6 /* Utils */,
 				A91364611F950FB200C338E8 /* Shaders */,
-				A91364321F95075300C338E8 /* AppDelegate.swift */,
-				A91364341F95075300C338E8 /* ViewController.swift */,
+				A944B4301F98E5F100EE0837 /* View-Controllers */,
 				A91364361F95075300C338E8 /* Main.storyboard */,
 				A91364391F95075300C338E8 /* Assets.xcassets */,
 				A913643B1F95075300C338E8 /* LaunchScreen.storyboard */,
 				A913643E1F95075300C338E8 /* Info.plist */,
+				A91364321F95075300C338E8 /* AppDelegate.swift */,
 			);
 			path = MetalParticleSystem;
 			sourceTree = "<group>";
@@ -149,6 +151,15 @@
 				A91364621F950FC800C338E8 /* Shaders.metal */,
 			);
 			path = Shaders;
+			sourceTree = "<group>";
+		};
+		A944B4301F98E5F100EE0837 /* View-Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A91364341F95075300C338E8 /* MetalViewController.swift */,
+				A944B42E1F98E40300EE0837 /* GeometrySceneViewController.swift */,
+			);
+			path = "View-Controllers";
 			sourceTree = "<group>";
 		};
 		A9DE73301F96236D00E180A6 /* Utils */ = {
@@ -308,10 +319,11 @@
 			files = (
 				A91364631F950FC800C338E8 /* Shaders.metal in Sources */,
 				A944B42D1F98CCD100EE0837 /* Matrix4.swift in Sources */,
+				A944B42F1F98E40300EE0837 /* GeometrySceneViewController.swift in Sources */,
 				A9DE733B1F963E2500E180A6 /* Node.swift in Sources */,
 				A9DE73391F963DBB00E180A6 /* Vertex.swift in Sources */,
 				A9DE733D1F96426900E180A6 /* Triangle.swift in Sources */,
-				A91364351F95075300C338E8 /* ViewController.swift in Sources */,
+				A91364351F95075300C338E8 /* MetalViewController.swift in Sources */,
 				A9AA46CA1F9713EA001C1F36 /* Cube.swift in Sources */,
 				A91364331F95075300C338E8 /* AppDelegate.swift in Sources */,
 			);
